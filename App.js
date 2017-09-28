@@ -64,6 +64,8 @@ export default class App extends React.Component {
          options={['flex-start', 'center', 'flex-end', 'stretch']}
          onChange={(option) => this.setState({alignItems: option})}
        />
+
+      <ScrollView horizontal>
        <View style={[styles.layout, layoutStyle]}>
 
          <Text style={styles.textLike}>Like al mas pulento</Text>
@@ -90,11 +92,26 @@ export default class App extends React.Component {
           />
             <Text style={styles.textLike} onPress={() => this.changeState(2)}> {this.state.like[2]} Like!</Text>
          </View>
+
+
        </View>
 
-
+     </ScrollView>
 
      </View>
+
+
+
+
+     <View style={styles.boxLarge} />
+      <ScrollView horizontal>
+        <View style={styles.boxSmall} />
+        <View style={styles.boxSmall} />
+        <View style={styles.boxSmall} />
+      </ScrollView>
+      <View style={styles.boxLarge} />
+      <View style={styles.boxSmall} />
+      <View style={styles.boxLarge} />
 
       </ScrollView>
     );
@@ -124,5 +141,19 @@ textLike : {
   justifyContent : 'center',
   fontWeight: 'bold',
     fontSize: 30,
-}
+},
+boxSmall: {
+   width: 200,
+   height: 200,
+   marginBottom: 10,
+   marginRight: 10,
+   backgroundColor: 'skyblue',
+ },
+ boxLarge: {
+   width: 300,
+   height: 300,
+   marginBottom: 10,
+   marginRight: 10,
+   backgroundColor: 'steelblue',
+ },
 })
