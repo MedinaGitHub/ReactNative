@@ -9,7 +9,29 @@ export default class App extends React.Component {
    flexDirection: 'row',
    justifyContent: 'center',
    alignItems: 'center',
-   like : [1,2,3]
+   like : [0,0,0]
+ }
+
+ changeState(index){
+
+   var more = this.state.like[index] ;
+   var more = more + 1;
+
+   console.log(more);
+
+   this.setState({
+
+     like : this.state.like.map((lik , i)=>
+     index === i ? more : lik
+    )
+   });
+
+
+ }
+
+ onChangeLike = (index) => {
+
+   console.log(index);
  }
 
 
@@ -43,27 +65,30 @@ export default class App extends React.Component {
          onChange={(option) => this.setState({alignItems: option})}
        />
        <View style={[styles.layout, layoutStyle]}>
+
+         <Text style={styles.textLike}>Like al mas pulento</Text>
+
          <View style={styles.box} >
            <Image
             style={styles.image}
             source={{uri: 'http://resit.cl/img/team/256/surrutia.jpg'}}
           />
 
-          <Text style={styles.textLike} onPress={() => this.setState()} >{like[0]} Like!</Text>
+          <Text style={styles.textLike} onPress={() => this.changeState(0)} > {this.state.like[0]} Like!</Text>
           </View>
          <View style={styles.box} >
            <Image
             style={styles.image}
             source={{uri: 'http://resit.cl/img/team/256/despinoza.jpg'}}
           />
-            <Text style={styles.textLike} onPress={() =>this.setState( )} >{this.state.like[1]} Like!</Text>
+            <Text style={styles.textLike} onPress={() => this.changeState(1)}> {this.state.like[1]} Like!</Text>
           </View>
          <View style={styles.box} >
            <Image
             style={styles.image}
             source={{uri: 'http://resit.cl/img/team/256/smarti.jpg'}}
           />
-            <Text style={styles.textLike} onPress={() =>this.setState( )} >{this.state.like[2]} Like!</Text>
+            <Text style={styles.textLike} onPress={() => this.changeState(2)}> {this.state.like[2]} Like!</Text>
          </View>
        </View>
 
